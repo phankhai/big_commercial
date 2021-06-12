@@ -1,10 +1,7 @@
 package com.example.big_commercial.controller;
 
 import com.example.big_commercial.config.BadRequestException;
-import com.example.big_commercial.config.EmailException;
-import com.example.big_commercial.config.ProductNotfoundException;
-import com.example.big_commercial.constant.ErrorConstants;
-import com.example.big_commercial.entity.Product;
+import com.example.big_commercial.entity.Test;
 import com.example.big_commercial.enums.ErrorCodeMap;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,21 +15,21 @@ import java.util.Map;
 @RequestMapping("test")
 public class HelloController {
 
-    private static Map<String, Product> productRepo = new HashMap<>();
+    private static Map<String, Test> productRepo = new HashMap<>();
     static {
-        Product honey = new Product();
+        Test honey = new Test();
         honey.setId("1");
         honey.setName("Honey");
         productRepo.put(honey.getId(), honey);
 
-        Product almond = new Product();
+        Test almond = new Test();
         almond.setId("2");
         almond.setName("Almond");
         productRepo.put(almond.getId(), almond);
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product) {
+    public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Test product) {
         if(!productRepo.containsKey(id)) throw new BadRequestException(ErrorCodeMap.FAILURE_PRODUCT_NOT_FOUND.name());
         productRepo.remove(id);
         product.setId(id);
@@ -41,7 +38,7 @@ public class HelloController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<Map<String, Product>> getAllProducts() {
+    public ResponseEntity<Map<String, Test>> getAllProducts() {
         return new ResponseEntity<>(productRepo, new HttpHeaders(), HttpStatus.OK);
     }
 

@@ -1,6 +1,6 @@
 package com.example.big_commercial.entity;
 
-public class Product {
+public class Test {
 
     private String id;
     private String name;

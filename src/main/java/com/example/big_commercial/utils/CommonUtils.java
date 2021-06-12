@@ -3,7 +3,6 @@ package com.example.big_commercial.utils;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
-import com.nimbusds.oauth2.sdk.util.StringUtils;
 
 import java.text.Normalizer;
 import java.text.ParseException;
@@ -13,6 +12,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by son.nguyen on 7/10/2020.

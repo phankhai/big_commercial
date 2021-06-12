@@ -1,8 +1,6 @@
 package com.example.big_commercial.enums;
 
-/**
- * Created by son.nguyen on 7/7/2020.
- */
+
 public enum ErrorCodeMap {
     FAILURE_EXCEPTION(-1),
     FAILURE_PHONE_EXISTED(1),
@@ -11,6 +9,7 @@ public enum ErrorCodeMap {
     FAILURE_PHONE_EMPTY(4),
     FAILURE_PASSWORD_EMPTY(5),
     FAILURE_USER_EXISTED(6),
+    FAILURE_USER_NOT_EXISTED(6),
     FAILURE_INVALID_PHONE(7),
     FAILURE_INVALID_EMAIL(8),
     FAILURE_USER_ID_EMPTY(9),

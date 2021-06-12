@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `big_commercial`.`user`(
-    id BIGINT PRIMARY KEY,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
     userId VARCHAR (10) NOT NULL,
     email VARCHAR (50) NOT NULL,
     password VARCHAR (100) NOT NULL,
