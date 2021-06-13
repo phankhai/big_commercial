@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/users", produces = {"application/json"})
-    public ResponseEntity<Page<UserDTO>> getPagingUsers(Pageable pageable){
-        return new ResponseEntity<Page<UserDTO>>(userService.findPaging(pageable), HttpStatus.OK);
+    public ResponseEntity<Page<UserDTO>> getPagingUsers(Pageable pageable, UserDTO userDTO){
+        return new ResponseEntity<Page<UserDTO>>(userService.findPaging(pageable, userDTO), HttpStatus.OK);
     }
 
     @GetMapping(value = "/users/{id}", produces = {"application/json"})

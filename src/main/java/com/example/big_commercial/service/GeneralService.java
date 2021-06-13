@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import java.io.Serializable;
 import java.util.Optional;
 
-public interface GeneralService<T ,ID extends Serializable> {
-    Page<T> findPaging(Pageable pageable);
+public interface GeneralService<T, F, ID extends Serializable> {
+    Page<T> findPaging(Pageable pageable, F f);
 
     Iterable<T> findAll();
 

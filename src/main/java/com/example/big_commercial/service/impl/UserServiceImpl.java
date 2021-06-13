@@ -7,10 +7,13 @@ import com.example.big_commercial.enums.ErrorCodeMap;
 import com.example.big_commercial.repository.UserRepository;
 import com.example.big_commercial.service.UserService;
 import com.example.big_commercial.service.mapper.UserMapper;
+import com.example.big_commercial.service.specification.SearchCriteria;
+import com.example.big_commercial.service.specification.UserSpecification;
 import com.example.big_commercial.utils.MapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -25,8 +28,10 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Page<UserDTO> findPaging(Pageable pageable) {
-        Page<UserEntity> userEntityPage = userRepository.findAll(pageable);
+    public Page<UserDTO> findPaging(Pageable pageable, UserDTO userDTO) {
+        // filter
+        UserSpecification spec1 = new UserSpecification(new SearchCriteria("firstName", "=" ,userDTO.getFirstName() != null ? userDTO.getFirstName() : ""));
+        Page<UserEntity> userEntityPage = userRepository.findAll(Specification.where(spec1), pageable);
         Page<UserDTO> userDTOS = userEntityPage.map(userMapper::toDto);
         return userDTOS;
     }
